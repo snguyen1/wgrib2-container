@@ -46,7 +46,7 @@ ENV CC=gcc
 RUN apt-get update && apt-get install -y gfortran
 COPY --from=builder /usr/local/ /usr/local/
 
-# VOLUME /srv/
-# VOLUME /opt/
-# WORKDIR /opt/
-# CMD ["/bin/bash", "entrypoint.sh"]
+VOLUME /srv/
+VOLUME /opt/
+WORKDIR /opt/
+CMD ["/bin/bash", "entrypoint.sh"]
