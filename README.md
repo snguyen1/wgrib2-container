@@ -1,5 +1,8 @@
-WGRIB2 on Container (Debian Bulleyes)
-### Note: I update the container based on: https://hub.docker.com/r/bearstudio/wgrib/
+WGRIB2 on Container (Debian)
+
+## Dockerhub: 
+`docker pull sondngyn/wgrib2:latest`
+
 ## USAGE
 
 ### Usage:
@@ -12,7 +15,7 @@ Create `.env` file from `.env.dist` and change the env values to the dirs locati
 #### Docker CLI
 `docker build -t wgrib2 .`
 ##### On Linux:
-`docker run -v /path/to/data:/srv/ -v /path/to/script:/opt/ sondngyn/wgrib2 /opt/script_file_name.sh`
+`docker run -v /path/to/data:/srv/ -v /path/to/script:/opt/ wgrib2 /opt/script_file_name.sh`
 ##### On Windows: 
 *Note:
 Remember to put `#!bin/bash` in the beginning of your script file
