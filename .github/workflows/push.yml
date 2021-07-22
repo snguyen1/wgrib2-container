@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: sondngyn/wgrib2:test
+#           tags: sondngyn/wgrib2:latest
