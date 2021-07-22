@@ -1,7 +1,7 @@
-WGRIB2 on Container (Debian)
+WGRIB2 on Container (Debian) with Python 3.8
 
 ## Dockerhub: 
-`docker pull sondngyn/wgrib2:latest`
+`docker pull sondngyn/wgrib2:python38`
 
 ## USAGE
 
