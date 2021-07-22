@@ -28,4 +28,5 @@ RUN apt-get update && apt-get install -y \
 VOLUME /srv/
 VOLUME /opt/
 WORKDIR /opt/
-CMD ["/bin/bash", "entrypoint.sh"]
+ENTRYPOINT [ "/bin/bash" ]
+CMD ["/opt/entrypoint.sh"]
