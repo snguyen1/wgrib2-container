@@ -1,7 +1,7 @@
-name: Docker Hub Push
+name: Docker Hub Push and Vulnerability Scan
 on:
   push:
-# Publish semver tags as releases.
+# Publish server tags as releases.
     tags: [ '*' ]
 
 jobs:
@@ -30,3 +30,12 @@ jobs:
           cache-from: type=registry,ref=sondngyn/wgrib2:latest
           cache-to: type=inline
           tags: sondngyn/wgrib2:latest
+      -
+       name: Snyk scan for vulnerabilities
+       uses: snyk/actions/docker@master
+       env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+       with:
+         image: sondngyn/wgrib2
+#        only report high severity
+         args: --severity-threshold=high
