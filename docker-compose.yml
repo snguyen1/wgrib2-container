@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  wgrib2:
+    image: wgrib2
+    container_name: wgrib2
+    restart: unless-stopped
+    env_file: ./.env
+    entrypoint: /bin/bash
+    # Change this command to your bash script filename
+    command: "/srv/script.sh"
+    build:
+      context: ./
+    volumes: 
+      - type: bind
+        source: ${HOST_DATA_ABS_DIR}
+        target: /opt/
+      - type: bind
+        source: ${HOST_SCRIPT_ABS_DIR}
+        target: /srv/
+

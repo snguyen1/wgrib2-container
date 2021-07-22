@@ -13,21 +13,20 @@ RUN apt-get update && apt-get install -y \
     bzip2 \
     tar \
     amqp-tools \
-    openssh-client
-
-RUN apt-get install -y \
+    openssh-client \
     gfortran \
-    --no-install-recommends && rm -r /var/lib/apt/lists/*
-RUN wget ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz -O /tmp/wgrib2.tgz
-RUN mkdir -p /usr/local/grib2/
-RUN tar -xf /tmp/wgrib2.tgz -C /tmp/
-RUN rm -r /tmp/wgrib2.tgz
-RUN mv /tmp/grib2/ /usr/local/grib2/
-RUN cd /usr/local/grib2/grib2 && make
-RUN ln -s /usr/local/grib2/grib2/wgrib2/wgrib2 /usr/local/bin/wgrib2
-RUN apt-get -y autoremove build-essential
+    --no-install-recommends && rm -r /var/lib/apt/lists/* \
+    && wget ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz -O /tmp/wgrib2.tgz \
+    && mkdir -p /usr/local/grib2/ \
+    && tar -xf /tmp/wgrib2.tgz -C /tmp/ \
+    && rm -r /tmp/wgrib2.tgz \
+    && mv /tmp/grib2/ /usr/local/grib2/ \
+    && cd /usr/local/grib2/grib2 && make \
+    && ln -s /usr/local/grib2/grib2/wgrib2/wgrib2 /usr/local/bin/wgrib2 \
+    && apt-get -y autoremove build-essential
 
 VOLUME /srv/
 VOLUME /opt/
 WORKDIR /opt/
-CMD ["/bin/bash", "entrypoint.sh"]
+ENTRYPOINT [ "/bin/bash" ]
+CMD ["/opt/entrypoint.sh"]
