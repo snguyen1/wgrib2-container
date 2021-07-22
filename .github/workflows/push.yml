@@ -2,7 +2,7 @@ name: Docker Hub Push
 on:
   push:
 # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: [ '*' ]
 
 jobs:
   docker:
