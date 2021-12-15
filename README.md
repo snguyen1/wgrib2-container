@@ -24,3 +24,25 @@ Make sure your script file uses LF (Linux line break types) instead of CRLF (Win
 (watch out for back-slashes and forward-slashes)
 ### Example on Windows (powershell): 
 `docker run -v C:\\Users\\myuser\\mydata\\:/srv/ -v C:\\Users\\myuser\\myscript\\:/opt/ wgrib2 myscript.sh`
+
+
+### USAGE:
+```yaml
+version: "3.8"
+
+services:
+  wgrib2:
+    image: sondngyn/wgrib2:aws
+    container_name: wgrib2
+    env_file: ./.env
+    entrypoint: /bin/bash
+    # Change this command to your bash script filename
+    command: "/opt/script.sh"
+    volumes:
+      - type: bind
+        source: ${HOST_SCRIPT_ABS_DIR}
+        target: /opt/
+      - type: bind
+        source: ${HOST_DATA_ABS_DIR}
+        target: /srv/
+```
