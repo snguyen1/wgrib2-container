@@ -57,7 +57,7 @@ RUN ./aws/install
 FROM debian:bullseye-slim
 ENV FC=gfortran
 ENV CC=gcc
-RUN apt-get update && apt-get install -y gfortran
+RUN apt-get update && apt-get install -y gfortran zip
 COPY --from=builder /usr/local/ /usr/local/
 
 VOLUME /srv/
